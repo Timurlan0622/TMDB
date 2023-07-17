@@ -1,0 +1,16 @@
+
+body{
+  display: block !important;
+}
+nav{
+  padding: 0 !important;
+}
+.media{
+  background-image: url('https://movies.do/addons/open_graph/TW.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 90vw;
+  height: 40vh;
+  margin: auto;
+}
