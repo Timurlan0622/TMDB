@@ -4,6 +4,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import { useState } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { SegmentedControl } from '@mantine/core';
 
 function Cards() {
     const autoplay = useRef(Autoplay({ delay: 3000 }));
@@ -11,11 +12,11 @@ function Cards() {
     const [data, setData] = useState([]);
     const [today, setToday] = useState('day');
 
-    const btnToday = (value) => {
-        setToday(value)
+    const btnToday = () => {
+        setToday('day')
     }
-    const btnWeek = (value) => {
-        setToday(value)
+    const btnWeek = () => {
+        setToday('week')
     }
 
     useEffect(() => {
@@ -30,21 +31,34 @@ function Cards() {
             .catch((error) => {
                 console.log(error);
             });
-    }, [today]);
+    }, [today,]);
 
     return (
         <>
             <div style={{ display: 'flex', padding: '5px 15px', marginLeft: '70px' }}>
                 <h2>В тренде</h2>
+                {/* <SegmentedControl
+                    onClick={(value) => setToday(value)}
+
+                    transitionDuration={500}
+                    transitionTimingFunction="linear"
+                    radius={16}
+                    color="blue"
+                    data={[
+                        { label: 'Сегодня', value: 'day' },
+                        { label: 'На этой неделе', value: 'week' },
+                    ]}
+                /> */}
                 <button
                 onClick={() => btnToday()}
                 >Сегодня</button>
                 <button
                 onClick={() => btnWeek()}
                 >На этой неделе</button>
+
             </div>
             <Carousel
-                style={{ width: '95vw', margin: 'auto',marginTop:'15px',marginBottom:'15px'}}
+                style={{ width: '95vw', margin: 'auto', marginTop: '15px', marginBottom: '15px' }}
                 withIndicators
                 height={400}
                 slideSize="0%"

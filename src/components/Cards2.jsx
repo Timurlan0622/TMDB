@@ -12,6 +12,13 @@ function Cards2() {
     const [data, setData] = useState([])
     const [today, setToday] = useState('tv')
 
+    const btnTv = () =>{
+        setToday('tv')
+    }
+    const btnCinema = () => {
+        setToday('movie')
+    }
+
     useEffect(() => {
         axios.get(`https://api.themoviedb.org/3/discover/${today}?language=ru&api_key=e840b9b3b2fc83813b3ed14c510e4105`)
             .then((response) => {
@@ -25,9 +32,13 @@ function Cards2() {
     return (
         <>
             <div style={{ display: 'flex', padding: '5px 15px', marginLeft: '70px' }}>
-                <h2>В тренде</h2>
-                <button>Сегодня</button>
-                <button>На этой неделе</button>
+                <h2>Что популярно</h2>
+                <button
+                    onClick={() => btnTv()}
+                >По ТВ</button>
+                <button
+                    onClick={() => btnCinema()}
+                >В кинотеатрах</button>
             </div>
             <Carousel
                 style={{ width: '95vw', margin: 'auto',marginTop:'15px',marginBottom:'15px' }}
